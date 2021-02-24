@@ -55,7 +55,7 @@ function Pokemon(props) {
             <Icon
               name="arrow left"
               size="big"
-              onClick={() => history.push("/mini-pokeapp")}
+              onClick={() => history.push("/")}
             />
           </div>
           <Grid.Row centered>

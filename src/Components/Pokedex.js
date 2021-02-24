@@ -68,7 +68,7 @@ function Pokedex(props) {
                 </Card.Description>
               </Card.Description>
             </Card.Content>
-            <Button onClick={() => history.push(`/mini-pokeapp/${id}`)}>
+            <Button onClick={() => history.push(`/${id}`)}>
               View more details
             </Button>
           </Card>

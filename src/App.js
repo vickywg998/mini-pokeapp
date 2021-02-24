@@ -8,10 +8,10 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/mini-pokeapp" component={Pokedex} />
+        <Route exact path="/" component={Pokedex} />
         <Route
           exact
-          path="/mini-pokeapp/:pokeID"
+          path="/:pokeID"
           render={(props) => <Pokemon {...props} />}
         />
       </Switch>
