@@ -1,19 +1,22 @@
-import React from 'react'
-import { Route, Switch } from "react-router-dom";
+import React from 'react';
+import './App.scss';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Pokedex from "./Components/Pokedex";
 import Pokemon from "./Components/PokeCard";
 
 
-function App() {
+function Routes() {
   return (
+    <Router>
     <Switch>
       <Route exact path="/" render={() => <Pokedex />}></Route>
       <Route exact path="/:pokemonId" render={() => <Pokemon/>}></Route>
     </Switch>
+    </Router>
   );
 }
 
-export default App;
+export default Routes;
 
 // Requirements:
 

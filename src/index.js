@@ -1,16 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import 'semantic-ui-css/semantic.min.css';
-import App from "./App";
-import { Router } from "react-router-dom";
+import "./index.scss";
+import "semantic-ui-css/semantic.min.css";
+import Routes from "./Routes";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <Routes />
   </React.StrictMode>,
   document.getElementById("root")
 );
-
