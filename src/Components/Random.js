@@ -40,3 +40,30 @@ function Random() {
 }
 
 export default Random;
+
+
+// Wanted to implement the following solutions to get a list of random results since the current one only gets one result.  
+// const getRandomPokemon = (k) => {
+//     axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=151&offset=0`).then((res) => {
+//         var pokemons = JSON.parse(JSON.stringify(res.data))
+//         // console.log("pokemons", pokemons)
+//         var rand_ids = getRandomInts(151, k);
+//         for (var i = 0; i < k; i++) {
+//             var id = rand_ids[i];
+//             console.log(pokemons.results[id].name, id);
+//         }
+//       setRandomPokemon(res.data);
+//       console.log(res.data, "res data")
+//     });
+//   };
+
+//   const getRandomInts = (max, k)=> {
+//     var res = [];
+//     while (res.length < k) {
+//       var number = Math.floor(Math.random() * Math.floor(max));
+//       if (!res.includes(number)) {
+//         res.push(number);
+//       }
+//     }
+//     return res;
+//   }

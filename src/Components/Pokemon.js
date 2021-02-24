@@ -1,13 +1,5 @@
-import React, { useState, useEffect, PureComponent } from "react";
-import { Button, Grid, Table, Label } from "semantic-ui-react";
-import {
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-} from "recharts";
-
+import React, { useState, useEffect } from "react";
+import { Grid, Table, Label, Icon, Statistic } from "semantic-ui-react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import axios from "axios";
@@ -24,6 +16,7 @@ function Pokemon(props) {
       .then((res) => {
         const { data } = res;
         setPokemon(data);
+        console.log(data);
       })
       .catch((error) => {
         setPokemon(false);
@@ -31,17 +24,7 @@ function Pokemon(props) {
   }, [pokeID]);
 
   const loadPokemon = (pokemon) => {
-    const {
-      name,
-      id,
-      species,
-      height,
-      weight,
-      abilities,
-      sprites,
-      stats,
-      types,
-    } = pokemon;
+    const { name, id, height, weight, abilities, sprites, stats, types, } = pokemon;
     const pokeImageUrl = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`;
     const pokeImageUrl2 = `https://pokeres.bastionbot.org/images/pokemon/${
       id - 1
@@ -59,6 +42,13 @@ function Pokemon(props) {
               <img src={front_default} /> <h2>{`${name} #${id}`}</h2>
             </div>
           </Grid.Row>
+          <div className="pokemon-arrow">
+            <Icon
+              name="arrow left"
+              size="big"
+              onClick={() => history.push("/")}
+            />
+          </div>
           <Grid.Row centered>
             <Grid.Column width={6}>
               <AliceCarousel autoPlay autoPlayInterval="3000">
@@ -115,7 +105,7 @@ function Pokemon(props) {
                   </Table.Row>
                 </Table.Body>
               </Table>
-              <h4>Types</h4>
+              <h3 className="pokemon-types-header">Types</h3>
               {types.map((info) => {
                 return (
                   <Label color="brown" key={info.type.name} size="big">
@@ -125,31 +115,20 @@ function Pokemon(props) {
               })}
             </Grid.Column>
           </Grid.Row>
-
-          <Grid.Row>
-            Base Stats:
-            {stats.map((info) => {
-              return (
-                <div key={info.stat.name}>
-                  {" "}
-                  {`${info.base_stat} ${info.stat.name}`}
-                </div>
-              );
-            })}
-            <RadarChart cx="50%" cy="50%" outerRadius="80%" data={pokemon}>
-              <PolarGrid />
-              <PolarAngleAxis
-                dataKey={pokemon.stats.map((info) => info.name)}
-              />
-              <PolarRadiusAxis />
-              <Radar
-                name="Mike"
-                dataKey="A"
-                stroke="#8884d8"
-                fill="#8884d8"
-                fillOpacity={0.6}
-              />
-            </RadarChart>
+    
+          <Grid.Row centered className="pokemon-stats-container">
+          <h3>Stats</h3>
+            <Statistic.Group inverted widths={14}>
+              {stats.map((info) => {
+                return (
+                  <Statistic key={info.stat.name}>
+                    <Statistic.Value>{info.base_stat}</Statistic.Value>
+                    <Statistic.Label>{info.stat.name}</Statistic.Label>
+              
+                  </Statistic>
+                );
+              })}
+            </Statistic.Group>
           </Grid.Row>
         </Grid>
       </>
@@ -161,12 +140,6 @@ function Pokemon(props) {
       {pokemon === undefined && <p>loading</p>}
       {pokemon !== undefined && pokemon && loadPokemon(pokemon)}
       {pokemon === false && <p>Sorry, there's no such Pokemon!</p>}
-
-      {pokemon !== undefined && (
-        <Button variant="contained" onClick={() => history.push("/")}>
-          back to pokedex
-        </Button>
-      )}
     </>
   );
 }
