@@ -1,38 +1,41 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+// Font Variables
+$primary-font: "Press Start 2P", cursive;
+
+body {
+  background: #003a70;
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1,
+h2,
+h3,
+h4,
+h5,
+span {
+  font-family: $primary-font;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.pokedex {
+  &-header {
+    padding-top: 2em;
+    text-shadow: 0px 5px 5px #2a75bb;
+    color: #ffcb05;
+    font-size: 4em;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  &-pokeball-sizing {
+    width: 150px;
+    height: 100px;
   }
-  to {
-    transform: rotate(360deg);
+  &-card {
+    border: 10px solid #ffcb05 !important;
+  }
+  &-card-content {
+    background: #ee8329 !important;
+  }
+  &-card-image {
+    margin: 1em;
+    border: 3px solid black;
   }
 }

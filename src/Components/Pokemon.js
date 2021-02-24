@@ -11,8 +11,8 @@ function Pokemon(props) {
   useEffect(() => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${pokeID}/`)
-      .then((response) => {
-        const { data } = response;
+      .then((res) => {
+        const { data } = res;
         setPokemon(data);
       })
       .catch((error) => {
@@ -21,7 +21,7 @@ function Pokemon(props) {
   }, [pokeID]);
 
   const generatePokemonJSX = (pokemon) => {
-    const { name, id, species, height, weight, types, sprites } = pokemon;
+    const { name, id, species, height, weight, abilities, sprites, stats, types } = pokemon;
     const fullImageUrl = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`;
     const { front_default } = sprites;
     return (
@@ -35,9 +35,21 @@ function Pokemon(props) {
         Height: {height}
         Weight: {weight}
         Types:
-        {types.map((typeInfo) => {
-          const { type } = typeInfo;
+        {types.map((info) => {
+          const { type } = info;
           const { name } = type;
+          return <div key={name}> {`${name}`}</div>;
+        })}
+
+        Abilites:
+        {abilities.map((info) => {
+          const { ability } = info;
+          const { name } = ability;
+          return <div key={name}> {`${name}`}</div>;
+        })}
+       Base Stats: {stats.map((info) => {
+          const { stat } = info;
+          const { name } = stat;
           return <div key={name}> {`${name}`}</div>;
         })}
       </>
@@ -56,27 +68,6 @@ function Pokemon(props) {
         </Button>
       )}
 
-      {/* <Card key={pokemon.id}>
-        <Card.Img
-          className="card-img-top"
-          src={`${process.env.PUBLIC_URL}/products/${pokemon.sku}.jpg`}
-          alt={pokemon.title}
-        />
-        <Card.Body>
-          <Card.Title>{product.title}</Card.Title>
-
-          <div className="product_card-container">
-            <Card.Text>
-              <Button
-                className="button_primary-color pet-button"
-                onClick={() => props.handleAddToCart(pokemon)}
-              >
-                <Icon name="add to cart" /> Add to cart
-              </Button>
-            </Card.Text>
-          </div>
-        </Card.Body>
-      </Card> */}
     </>
   );
 }
