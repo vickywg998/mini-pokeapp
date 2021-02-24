@@ -24,7 +24,16 @@ function Pokemon(props) {
   }, [pokeID]);
 
   const loadPokemon = (pokemon) => {
-    const { name, id, height, weight, abilities, sprites, stats, types, } = pokemon;
+    const {
+      name,
+      id,
+      height,
+      weight,
+      abilities,
+      sprites,
+      stats,
+      types,
+    } = pokemon;
     const pokeImageUrl = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`;
     const pokeImageUrl2 = `https://pokeres.bastionbot.org/images/pokemon/${
       id - 1
@@ -32,7 +41,7 @@ function Pokemon(props) {
     const pokeImageUrl3 = `https://pokeres.bastionbot.org/images/pokemon/${
       id + 1
     }.png`;
-    const { front_default } = sprites;
+    const { front_default, back_default, back_shiny, front_shiny } = sprites;
 
     return (
       <>
@@ -46,25 +55,31 @@ function Pokemon(props) {
             <Icon
               name="arrow left"
               size="big"
-              onClick={() => history.push("/")}
+              onClick={() => history.push("/mini-pokeapp")}
             />
           </div>
           <Grid.Row centered>
-            <Grid.Column width={6}>
+            <Grid.Column width={7}>
               <AliceCarousel autoPlay autoPlayInterval="3000">
                 <img
-                  style={{ width: "300px", height: "300px" }}
-                  src={pokeImageUrl2}
+                  style={{  height: "300px" }}
+                  src={front_default}
                   className="pokemon-img-container"
                 />
                 <img
-                  style={{ width: "300px", height: "300px" }}
-                  src={pokeImageUrl}
+                  style={{  height: "300px" }}
+                  src={front_shiny}
+                  className="pokemon-img-container"
+                />
+
+                <img
+                  style={{ height: "300px" }}
+                  src={back_default}
                   className="pokemon-img-container"
                 />
                 <img
-                  style={{ width: "300px", height: "300px" }}
-                  src={pokeImageUrl3}
+                  style={{ height: "300px" }}
+                  src={back_shiny}
                   className="pokemon-img-container"
                 />
               </AliceCarousel>
@@ -115,16 +130,15 @@ function Pokemon(props) {
               })}
             </Grid.Column>
           </Grid.Row>
-    
+
           <Grid.Row centered className="pokemon-stats-container">
-          <h3>Stats</h3>
+            <h3>Stats</h3>
             <Statistic.Group inverted widths={14}>
               {stats.map((info) => {
                 return (
                   <Statistic key={info.stat.name}>
                     <Statistic.Value>{info.base_stat}</Statistic.Value>
                     <Statistic.Label>{info.stat.name}</Statistic.Label>
-              
                   </Statistic>
                 );
               })}
