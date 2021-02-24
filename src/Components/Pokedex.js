@@ -104,7 +104,6 @@ function Pokedex(props) {
         {isError && (
           <div>Oops! Can't find this Pokemon, try searching another one?</div>
         )}
-        {/* {isLoading ? <div>Loading ...</div> : loadPokemon(data)} */}
 
         {loading ? <h1>Loading...</h1> : loadPokemon(results)}
       </Grid.Row>

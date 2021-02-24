@@ -39,3 +39,17 @@ span {
     border: 3px solid black;
   }
 }
+
+.pokemon {
+  &-header {
+    display: flex;
+    padding: 3em;
+    flex-flow: row wrap;
+    align-items: center;
+  }
+  &-img-container {
+    background: rgba(243, 237, 237, 0.3);
+    padding: 2em;
+    border-radius: 10px;
+  }
+}
