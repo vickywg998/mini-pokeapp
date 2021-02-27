@@ -25,7 +25,7 @@ function Pokedex(props) {
       }
       setLoading(false);
     }
-    if (query !== " ") {
+    if (query !== "mini-pokeapp") {
       fetchData();
     }
     fetchData();
