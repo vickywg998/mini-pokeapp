@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/mini-pokeapp/static/css/main.33d90938.chunk.css",
-    "main.js": "/mini-pokeapp/static/js/main.8a027c45.chunk.js",
-    "main.js.map": "/mini-pokeapp/static/js/main.8a027c45.chunk.js.map",
+    "main.js": "/mini-pokeapp/static/js/main.11d47fb5.chunk.js",
+    "main.js.map": "/mini-pokeapp/static/js/main.11d47fb5.chunk.js.map",
     "runtime-main.js": "/mini-pokeapp/static/js/runtime-main.bc14c084.js",
     "runtime-main.js.map": "/mini-pokeapp/static/js/runtime-main.bc14c084.js.map",
     "static/css/2.6268cb82.chunk.css": "/mini-pokeapp/static/css/2.6268cb82.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.6268cb82.chunk.css",
     "static/js/2.078e2d41.chunk.js",
     "static/css/main.33d90938.chunk.css",
-    "static/js/main.8a027c45.chunk.js"
+    "static/js/main.11d47fb5.chunk.js"
   ]
 }
