@@ -22,17 +22,24 @@ function Pokemon(props) {
       });
   }, [pokeID]);
 
+  const colorStyles = {
+    electric: "yellow",
+    psychic: "purple",
+    poison: "purple",
+    ghost: "purple",
+    colorless: "white",
+    dark: "black",
+    metal: "grey",
+    water: "blue",
+    grass: "green",
+    fire: "red",
+    fighting: "brown",
+    ground: "brown",
+    rock: "brown",
+  };
+
   const loadPokemon = (pokemon) => {
-    const {
-      name,
-      id,
-      height,
-      weight,
-      abilities,
-      sprites,
-      stats,
-      types,
-    } = pokemon;
+    const { name, id, height, weight, abilities, sprites,stats,types } = pokemon;
 
     const { front_default, back_default, back_shiny, front_shiny } = sprites;
 
@@ -55,12 +62,12 @@ function Pokemon(props) {
             <Grid.Column width={7}>
               <AliceCarousel autoPlay autoPlayInterval="3000">
                 <img
-                  style={{  height: "300px" }}
+                  style={{ height: "300px" }}
                   src={front_default}
                   className="pokemon-img-container"
                 />
                 <img
-                  style={{  height: "300px" }}
+                  style={{ height: "300px" }}
                   src={front_shiny}
                   className="pokemon-img-container"
                 />
@@ -116,7 +123,11 @@ function Pokemon(props) {
               <h3 className="pokemon-types-header">Types</h3>
               {types.map((info) => {
                 return (
-                  <Label color="brown" key={info.type.name} size="big">
+                  <Label
+                    color={colorStyles[info.type.name]}
+                    key={info.type.name}
+                    size="big"
+                  >
                     {info.type.name}
                   </Label>
                 );

@@ -51,21 +51,21 @@ function Pokedex(props) {
                 <h5>Types:</h5>
                 {types.map((info) => {
                   return <p key={info.type.name}> {`${info.type.name}`}</p>;
+                })} 
+              </Card.Description>
+              <Card.Description>
+                <h5>Abilities: </h5>
+                {abilities.map((info) => {
+                  return (
+                    <p key={info.ability.name}> {`${info.ability.name}`}</p>
+                  );
                 })}
-                <Card.Description>
-                  <h5>Abilities: </h5>
-                  {abilities.map((info) => {
-                    return (
-                      <p key={info.ability.name}> {`${info.ability.name}`}</p>
-                    );
-                  })}
-                </Card.Description>
-                <Card.Description>
-                  <h5> Base Stats:</h5>
-                  {stats.map((info) => {
-                    return <p key={info.stat.name}> {`${info.stat.name}`}</p>;
-                  })}
-                </Card.Description>
+              </Card.Description>
+              <Card.Description>
+                <h5> Base Stats:</h5>
+                {stats.map((info) => {
+                  return <p key={info.stat.name}> {`${info.stat.name}`}</p>;
+                })}
               </Card.Description>
             </Card.Content>
             <Button onClick={() => history.push(`/mini-pokeapp/${id}`)}>
