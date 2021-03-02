@@ -5,7 +5,8 @@ Live demo: [https://www.imvickywong.com/mini-pokeapp/](https://www.imvickywong.c
 
 To Run the App in the development mode: 
 
-```npm install
+```
+   npm install
    npm start
 ```
 
