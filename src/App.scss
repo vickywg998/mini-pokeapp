@@ -17,6 +17,7 @@ span {
   font-family: $primary-font;
 }
 
+
 .pokedex {
   &-header {
     padding-top: 2em;
@@ -41,7 +42,6 @@ span {
 }
 
 .pokemon {
-
   &-header {
     display: flex;
     padding: 3em 3em 1em 3em;
@@ -69,4 +69,19 @@ span {
       color: #ffffff;
     }
   }
+}
+
+.random {
+  &-pokemon-card {
+    text-align: left !important;
+    background:linear-gradient(	#3d7dca 75%, #6eb0ca 25%) !important;
+  }
+  &-header {
+    font-family: $primary-font !important;
+    font-size: 13px !important;
+    padding-top: 1em;
+  }
+}
+img.random-pokemon-img {
+  margin: 0 !important;
 }

@@ -45,7 +45,7 @@ function Pokedex(props) {
                 wrapped
               />
               <Card.Meta>
-                Height: {height} Weight: {weight}
+                Height: {height}' Weight: {weight} lbs
               </Card.Meta>
               <Card.Description>
                 <h5>Types:</h5>
@@ -87,7 +87,7 @@ function Pokedex(props) {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            setQuery(search);
+            setQuery(search.trim().toLowerCase());
           }}
         >
           <Input
@@ -108,7 +108,7 @@ function Pokedex(props) {
         {loading ? <h1>Loading...</h1> : loadPokemon(results)}
       </Grid.Row>
       <Grid.Row>
-        <h2> Random Pokemon of the Day!</h2>
+        <h2> Random Pokemons of the Day!</h2>
       </Grid.Row>
       <Grid.Row>
         <Random />

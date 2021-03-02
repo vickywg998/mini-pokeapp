@@ -1,38 +1,66 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Card, Image } from "semantic-ui-react";
 
 function Random() {
-  const [randomPokemon, setRandomPokemon] = useState({});
+  const [randomPokemon, setRandomPokemon] = useState([]);
 
-  const getRandomPokemon = () => {
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${randomID()}`).then((res) => {
-      setRandomPokemon(res.data);
-    });
-  };
+  // getting a list of random results
+  const getRandomPokemon = (k) => {
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon/?limit=151&offset=0`)
+      .then((res) => {
+        var pokemons = JSON.parse(JSON.stringify(res.data));
+        var rand_ids = getRandomInts(151, k);
 
-  const randomID = () => {
-    const min = Math.ceil(1);
-    const max = Math.floor(151);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+        var randArr = [];
+        for (var i = 0; i < k; i++) {
+          var id = rand_ids[i];
+          randArr.push({ name: pokemons.results[id].name, id: id });
+        }
+        setRandomPokemon(randArr);
+      });
   };
 
   useEffect(() => {
-    getRandomPokemon();
+    getRandomPokemon(5);
   }, []);
+
+  const getRandomInts = (max, k) => {
+    var res = [];
+    while (res.length < k) {
+      var number = Math.floor(Math.random() * Math.floor(max));
+      if (!res.includes(number)) {
+        res.push(number);
+      }
+    }
+    return res;
+  };
 
   const randomPoke = () => {
     return (
-      <div>
-        <img
-          src={
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" +
-            randomPokemon.id +
-            ".png"
-          }
-          className="sprite"
-        />
-        <p>{randomPokemon.name}</p>
-      </div>
+      <Card.Group itemsPerRow={2}>
+        {randomPokemon.map((info) => {
+          return (
+            <Card key={info.id}>
+              <Card.Content className="random-pokemon-card">
+                <Image
+                  floated="left"
+                  size="tiny"
+                  src={
+                    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" +
+                    info.id +
+                    ".png"
+                  }
+                  className="random-pokemon-img"
+                />
+                <Card.Header className="random-header">{info.name}</Card.Header>
+                <Card.Meta>{info.id}</Card.Meta>
+              </Card.Content>
+            </Card>
+          );
+        })}
+      </Card.Group>
     );
   };
 
@@ -40,30 +68,3 @@ function Random() {
 }
 
 export default Random;
-
-
-// Wanted to implement the following solutions to get a list of random results since the current one only gets one result.  
-// const getRandomPokemon = (k) => {
-//     axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=151&offset=0`).then((res) => {
-//         var pokemons = JSON.parse(JSON.stringify(res.data))
-//         // console.log("pokemons", pokemons)
-//         var rand_ids = getRandomInts(151, k);
-//         for (var i = 0; i < k; i++) {
-//             var id = rand_ids[i];
-//             console.log(pokemons.results[id].name, id);
-//         }
-//       setRandomPokemon(res.data);
-//       console.log(res.data, "res data")
-//     });
-//   };
-
-//   const getRandomInts = (max, k)=> {
-//     var res = [];
-//     while (res.length < k) {
-//       var number = Math.floor(Math.random() * Math.floor(max));
-//       if (!res.includes(number)) {
-//         res.push(number);
-//       }
-//     }
-//     return res;
-//   }

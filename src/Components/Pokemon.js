@@ -16,7 +16,6 @@ function Pokemon(props) {
       .then((res) => {
         const { data } = res;
         setPokemon(data);
-        console.log(data);
       })
       .catch((error) => {
         setPokemon(false);
@@ -34,13 +33,7 @@ function Pokemon(props) {
       stats,
       types,
     } = pokemon;
-    const pokeImageUrl = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`;
-    const pokeImageUrl2 = `https://pokeres.bastionbot.org/images/pokemon/${
-      id - 1
-    }.png`;
-    const pokeImageUrl3 = `https://pokeres.bastionbot.org/images/pokemon/${
-      id + 1
-    }.png`;
+
     const { front_default, back_default, back_shiny, front_shiny } = sprites;
 
     return (
